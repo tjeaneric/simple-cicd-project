@@ -33,7 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: tuyishimire/simple-cicd-project-app:latest, tuyishimire/simple-cicd-project-app:${{ github.sha.substr(0, 7) }}
+          tags: tuyishimire/simple-cicd-project-app:latest, tuyishimire/simple-cicd-project-app:${{ github.sha[:7] }}
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
