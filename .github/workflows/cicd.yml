@@ -10,7 +10,7 @@ jobs:
   build_and_push:
     if: github.event.pull_request.merged == true
 
-    name: Push docker image to Docker Hub
+    name: Build & Push docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -33,7 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: tuyishimire/simple-cicd-project-app:latest
+          tags: tuyishimire/simple-cicd-project-app:latest, tuyishimire/simple-cicd-project-app:${{ github.sha.substr(0, 7) }}
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
